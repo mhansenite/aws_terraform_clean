@@ -1,0 +1,10 @@
+Looking to rework terraform 
+
+Trying to make the modules independant of any other so that we can call only the ones that we want for a given app 
+
+
+Also incorperating workspaces so that we can create "stacks" that can be nuked or rebuilt without effecting the base or other workspaces. 
+
+
+See referance for variables in workspaces 
+https://medium.com/@milescollier/handling-environmental-variables-in-terraform-workspaces-27d0278423df

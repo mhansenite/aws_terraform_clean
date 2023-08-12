@@ -5,12 +5,26 @@ provider "aws" {
   region = "${var.master.region}"
 }
 
+terraform {
+  backend "s3" {
+    bucket = "housio-terraform-state"
+    key    = "base/terraform.tfstate"
+    region = "us-west-2"
+    profile = "housio"
+    encrypt = true
+  }
+}
+
+
+
 module "iam" {
     source = "../modules/iam"
     master=var.master
     permissions=var.permissions
   
 }
+
+module "terraform_s3_state" {}
 
 
 # module "assign_policies" {

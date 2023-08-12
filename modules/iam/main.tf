@@ -68,7 +68,7 @@ resource "aws_iam_policy" "create_policies" {
   name        = "${var.master.convention}-${each.value}"
   path        = "/"
   description = "${var.master.convention}-${each.value}-policy"
-  policy = file("./policies/${each.value}.json")
+  policy = file("../configs/policies/${each.value}.json")
 }
 
 #Attatch local policies to groups
@@ -95,7 +95,7 @@ resource "aws_iam_role" "create_roles" {
   name        = "${var.master.convention}-${each.value.name}"
   path        = "/"
   description = "${var.master.convention}-${each.value.name}-role"
-  assume_role_policy = file("./roles/${each.value.name}.json")
+  assume_role_policy = file("../config/roles/${each.value.name}.json")
   managed_policy_arns  = ["arn:aws:iam::aws:policy/service-role/${each.value.policy}"]
 }
 

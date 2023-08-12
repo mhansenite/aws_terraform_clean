@@ -1,8 +1,4 @@
-master = {
-    region = "us-west-2"
-    convention="hansenites"
 
-}
 
 permissions = {
     ############################################################################

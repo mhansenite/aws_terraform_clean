@@ -1,4 +1,26 @@
 
+vpcblock1={
+    name="block1"
+    vpc_cidr_block = "10.1.0.0/16",
+    subnets_app = [{
+        name = "AP-Zone-1",
+        cidr_block = "10.1.1.0/24"
+        avl_zone ="a"
+    },{
+        name = "AP-Zone-2",
+        cidr_block = "10.1.2.0/24"
+        avl_zone ="b"
+   }],
+    subnets_db = [{
+        name = "DB-Zone-1",
+        cidr_block = "10.1.3.0/24"
+        avl_zone ="a"
+    },{
+        name = "DB-Zone-2",
+        cidr_block = "10.1.4.0/24"
+        avl_zone ="b"
+    }]
+}
 
 permissions = {
     ############################################################################

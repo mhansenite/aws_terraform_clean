@@ -26,3 +26,9 @@ module "iam" {
     permissions=var.permissions
   
 }
+
+module "vpc" {
+  source = "../modules/vpc"
+  master=  module.variables.master
+  
+}

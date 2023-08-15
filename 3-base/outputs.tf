@@ -30,4 +30,12 @@ output role_policy_flat {
 output role_policy_map {
   value = module.iam.role_policy_map
   }
-
+output "vpc_map" {
+    value = module.vpc_subnets.vpc_map
+}
+output "app_subnet_map" {
+    value = module.vpc_subnets.app_subnet_map
+}
+output "db_subnet_map" {
+    value = module.vpc_subnets.db_subnet_map
+}

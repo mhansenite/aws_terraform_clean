@@ -1,4 +1,5 @@
 variable "permissions" {}
+variable "vpc_subnets" {}
 
 #use modules and outputs to have a single master variable that we can call
 module "variables" {
@@ -13,7 +14,7 @@ terraform {
     bucket = "hansenites-terraform-state"
     key    = "terraform.tfstate"
     region = "us-west-2"
-    # profile = "housio"
+    profile = "hansenites"
     encrypt = true
   }
 }
@@ -27,8 +28,9 @@ module "iam" {
   
 }
 
-module "vpc" {
-  source = "../modules/vpc"
+module "vpc_subnets" {
+  source = "../modules/vpc_subnets"
   master=  module.variables.master
+  vpc_subnets= var.vpc_subnets
   
 }

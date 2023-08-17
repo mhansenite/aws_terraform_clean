@@ -2,24 +2,23 @@
 #standards to follow  10.<vpc>.<avilability zone>.0/24 vpc octet is the the octet set by the vpc for the given env
 #Zone-1 is a 1  10.0.1.0  Zone-2 is 2  10.0.2.0 and so on 
 
-vpc_subnets = [
+vpcs = [
+    
     {
-    enable = true
-    name = "dev",     
-    vpc_cidr_block = "10.1.0.0/16",
-    app_subnet_zones=["10.1.1.0/24", "10.1.2.0/24", "10.1.3.0/24" ],
-    db_subnet_zones=["10.1.4.0/24", "10.1.5.0/24"],
+    workspace="dev"
+    subnet_zones={1="App", 2="DB",4="mikes"}# needs to have the #= the # sets the 3rd octet
+    # availability_zones=["a","c"] 
+    tag_purpose="NonProd Testing"
+    vpc_cidr_block = "10.1.0.0/16"
     },
     {
-    enable = true
-    name = "np",     
-    vpc_cidr_block = "10.2.0.0/16",
-    app_subnet_zones=["10.2.1.0/24", "10.2.2.0/24", "10.2.3.0/24" ],
-    db_subnet_zones=["10.2.4.0/24", "10.2.5.0/24"],
+    workspace="dev"
+    subnet_zones={1="App",2="DB",3="admin"}
+    # availability_zones=["a","c"]
+    tag_purpose="Testing environment for QA"
+    vpc_cidr_block = "10.2.0.0/16"
     }
 ]
-
-
 
 
 permissions = {

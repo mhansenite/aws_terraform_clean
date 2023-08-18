@@ -2,7 +2,7 @@
 locals{    
 master = {
     region = "us-west-2"
-    convention="hansenites"
+    convention="mysite"
 }
 
 

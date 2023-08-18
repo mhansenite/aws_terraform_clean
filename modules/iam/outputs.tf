@@ -32,21 +32,3 @@
 #   value = local.role_policy_map
 #   }
 
-subnet_build=merge([for k, v in local.subnet_az :{for v1 in v: v1.subnet_az_key => v1}]... )
-
-
-subnet_build={for k, v in local.subnet_az : k => { subnet_az={for k, v in local.subnet_flat : k => { 
-        
-        for k1,v1 in v.availability_zones: k1 => {
-            "name"=v.name,
-            "subnet_key"="${v.vpc_key}-${k1}",
-            "subnet_zones"=v.subnet_zones,
-            "availability_zones"=v1, 
-            "vpc_key"=v.vpc_key,
-            "workspace"=v.workspace,
-            "vpc_cidr" = v.vpc_cidr,
-            "cidr"=cidrsubnet(v.vpc_cidr,8,k1)
-            }
-        }
-
-    }

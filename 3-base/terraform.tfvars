@@ -1,22 +1,56 @@
 #vpcs are specified with the whole /16 zone.  10.<vpc>.0.0/16 
 #standards to follow  10.<vpc>.<avilability zone>.0/24 vpc octet is the the octet set by the vpc for the given env
 #Zone-1 is a 1  10.0.1.0  Zone-2 is 2  10.0.2.0 and so on 
+#network is the third octect in the ip .. so it must be unique
 
 vpcs = [
-    
     {
     workspace="dev"
-    subnet_zones={1="App", 2="DB",4="mikes"}# needs to have the #= the # sets the 3rd octet
-    # availability_zones=["a","c"] 
-    tag_purpose="NonProd Testing"
     vpc_cidr_block = "10.1.0.0/16"
+    tag_purpose="for the dev environment"
+    subnet_zones=[
+        {
+            network=1,
+            type="APP",
+            name="AppZone", #
+            avl_zone ="a"
+        },
+        {
+            network=2,
+            type="DB",
+            name="DatabaseZone_a",
+            avl_zone ="a"
+        },
+        {
+            network=4,
+            type="DB",
+            name="DatabaseZone_b",
+            avl_zone="b"
+        }]
     },
-    {
-    workspace="dev"
-    subnet_zones={1="App",2="DB",3="admin"}
-    # availability_zones=["a","c"]
-    tag_purpose="Testing environment for QA"
+   {
+    workspace="uat"
+    tag_purpose="for the uat environment"
     vpc_cidr_block = "10.2.0.0/16"
+    subnet_zones=[
+        {
+            network=1,
+            type="APP",
+            name="AppZone",
+            avl_zone ="a"
+        },
+        {
+            network=2,
+            type="DB",
+            name="DatabaseZone_a",
+            avl_zone ="a"
+        },
+        {
+            network=4,
+            type="DB",
+            name="DatabaseZone_b",
+            avl_zone="b"
+        }]
     }
 ]
 

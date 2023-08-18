@@ -31,16 +31,16 @@
 #   value = module.iam.role_policy_map
 #   }
 
-# output "vpc_resources" {
-#       value = { for k, v in module.vpcs.vpc_resources : k => v.id }
-# }
+output "vpc_resources" {
+      value = { for k, v in module.vpcs.vpc_resources : k => v.id }
+}
 # # output "vpc_map" {
 # #   value= module.vpcs.vpc_map
 # # }
 
-# output "subnet_set" {
-#     value = module.vpcs.subnet_set
-# }  
+output "subnet_set" {
+    value = module.vpcs.subnet_set
+}  
 # output "subnet_build" {
 #     value = module.vpcs.subnet_build
 # }  
@@ -49,6 +49,10 @@
 # output "subnet_flat" {
 #     value = module.vpcs.subnet_flat
 # }
-# output "subnet_resources" {
-#   value = { for k, v in module.vpcs.subnet_resources : k => v.id }
-# }
+output "subnet_resources" {
+  value = { for k, v in module.vpcs.subnet_resources : k => v.id }
+}
+output "working" {
+    value = module.vpcs.working 
+  
+}
